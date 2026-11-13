@@ -10,8 +10,6 @@ namespace Test
         [TestMethod]
         public void TestOrdreSimple()
         {
-            // Il faut faire un update-database pour que ce test puisse être exécuté!
-
             // ATTENTION: Dans un test unitaire, il est préférable d'utiliser une base de données en mémoire (InMemoryDatabase) pour éviter les effets de bord liés à l'état de la base de données.
             // Cependant, pour reproduire le problème spécifique lié à l'ordre des éléments dans une liste, nous utilisons ici SQL Server LocalDB.
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=DemoBugOrdeDeListeContext;Trusted_Connection=True;MultipleActiveResultSets=true";
@@ -22,6 +20,9 @@ namespace Test
                 .Options;
 
             using var db = new DemoBugOrdeDeListeContext(options);
+
+            // L'équivalent d'exécuter update-database
+            db.Database.Migrate();
             
             Enfant enfant1 = new Enfant { Nom = "Enfant 1" };
             Enfant enfant2 = new Enfant { Nom = "Enfant 2" };
