@@ -20,8 +20,7 @@ namespace Test
                 .Options;
 
             using var db = new DemoBugOrdeDeListeContext(options);
-            using var transaction = db.Database.BeginTransaction();
-
+            
             Enfant enfant1 = new Enfant { Nom = "Enfant 1" };
             Enfant enfant2 = new Enfant { Nom = "Enfant 2" };
             db.Enfant.Add(enfant1);
