@@ -37,6 +37,9 @@ namespace Test
             int parentId = parent.Id;
 
             // On recharge l'entité depuis la base de données pour vérifier l'ordre des enfants.
+            // Le ChangeTracker est une cache qui garde en mémoire tout les objets obtenu ou créer avec ce dbContext
+            // Si on ne fait pas de Clear, la méthode Single va retourner l'objet parent qui a été créé plus haut
+            // En le retirant de la cache, le système va maintenant créer un nouvel objet à partir du Data écrit dans la BD
             db.ChangeTracker.Clear();
             Parent parentFromDb = db.Parent.Single(p => p.Id == parentId);
 
