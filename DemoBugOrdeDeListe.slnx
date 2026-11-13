@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DemoBugOrdeDeListe/DemoBugOrdeDeListe.csproj" />
+  <Project Path="Test/Test.csproj" Id="d1a2544a-0520-4fea-af79-c10ceb6663d9" />
+</Solution>
